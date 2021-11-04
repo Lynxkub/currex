@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title%}Home Page{% endblock %}
+
+{% block content %}
+
+<form method="POST" action="/converter_page">
+    <label name="converting_from">Converting From</label>
+    <input type="text" name="converting_from" maxlength="3" style="text-transform: uppercase">
+    <br>
+    <label name="converting_to">Converting To</label>
+    <input type="text" name="converting_to" maxlength="3" style="text-transform: uppercase">
+    <br>
+    <label name="amount">Amount</label>
+    <input name="amount" type="number">
+    <br>
+    <button>Convert</button>
+</form>
+{% for msg in get_flashed_messages() %}
+<h2>{{msg}}</h2>
+{% endfor %}
+
+<ul name="conversion_list">
+{% for eq in conversion_equations %}
+    <li>{{eq}}</li>
+
+{% endfor %}
+</ul>
+{% endblock %}
